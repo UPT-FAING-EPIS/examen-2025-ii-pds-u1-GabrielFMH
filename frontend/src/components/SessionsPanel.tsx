@@ -117,13 +117,19 @@ const SessionsPanel: React.FC = () => {
         />
         <button type="submit">Create Session</button>
       </form>
-      <ul className="list">
-        {sessions.map(session => (
-          <li key={session.id}>
-            <strong>{session.course?.name || 'Unknown Course'}</strong> - {new Date(session.date).toLocaleString()} - {session.topic}
-          </li>
-        ))}
-      </ul>
+      // SessionsPanel.tsx (parte del renderizado de la lista)
+        <ul className="list">
+          {sessions.map(session => {
+            // Buscar el objeto Course correspondiente en el array 'courses' usando session.courseId
+            const courseForSession = courses.find(course => course.id === session.courseId);
+            return (
+              <li key={session.id}>
+                {/* Usar el nombre del curso encontrado */}
+                <strong>{courseForSession ? courseForSession.name : 'Unknown Course'}</strong> - {new Date(session.date).toLocaleString()} - {session.topic}
+              </li>
+            );
+          })}
+        </ul>
     </div>
   );
 };
