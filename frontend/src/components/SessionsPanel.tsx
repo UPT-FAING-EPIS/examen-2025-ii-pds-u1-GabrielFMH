@@ -32,7 +32,7 @@ const SessionsPanel: React.FC = () => {
 
   const handleCreateSession = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validación básica del lado del cliente
     if (newSession.courseId <= 0) {
         alert('Por favor selecciona un curso válido.');
@@ -54,14 +54,14 @@ const SessionsPanel: React.FC = () => {
       console.log("Sending session data:", JSON.stringify(sessionToCreate, null, 2)); // Para depuración
 
       await sessionsApi.create(sessionToCreate);
-      
+
       // Reiniciar el formulario
       setNewSession({ courseId: 0, date: '', topic: '' });
-      
+
       loadData(); // Recargar datos
     } catch (error: any) { // Especificar 'any' para acceder a response
       console.error('Error creating session:', error);
-      
+
       // Mejor manejo de errores
       let errorMsg = 'Error al crear sesión.';
       if (error.response) {
@@ -81,8 +81,20 @@ const SessionsPanel: React.FC = () => {
         // Algo pasó al configurar la solicitud
         errorMsg = error.message || 'Error desconocido.';
       }
-      
+
       alert(errorMsg);
+    }
+  };
+
+  const handleDeleteSession = async (id: number) => {
+    if (window.confirm('¿Estás seguro de que quieres eliminar esta sesión?')) {
+      try {
+        await sessionsApi.delete(id);
+        loadData();
+      } catch (error) {
+        console.error('Error al eliminar sesión:', error);
+        alert('Error al eliminar sesión.');
+      }
     }
   };
 
@@ -126,6 +138,7 @@ const SessionsPanel: React.FC = () => {
               <li key={session.id}>
                 {/* Usar el nombre del curso encontrado */}
                 <strong>{courseForSession ? courseForSession.name : 'Curso Desconocido'}</strong> - {new Date(session.date).toLocaleString()} - {session.topic}
+                <button onClick={() => handleDeleteSession(session.id)}>Eliminar</button>
               </li>
             );
           })}

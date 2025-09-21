@@ -34,6 +34,18 @@ const CoursesPanel: React.FC = () => {
     }
   };
 
+  const handleDeleteCourse = async (id: number) => {
+    if (window.confirm('¿Estás seguro de que quieres eliminar este curso?')) {
+      try {
+        await coursesApi.delete(id);
+        loadCourses();
+      } catch (error) {
+        console.error('Error al eliminar curso:', error);
+        alert('Error al eliminar curso.');
+      }
+    }
+  };
+
   if (loading) return <div>Cargando...</div>;
 
   return (
@@ -59,6 +71,7 @@ const CoursesPanel: React.FC = () => {
         {courses.map(course => (
           <li key={course.id}>
             <strong>{course.name}</strong>: {course.description}
+            <button onClick={() => handleDeleteCourse(course.id)}>Eliminar</button>
           </li>
         ))}
       </ul>
