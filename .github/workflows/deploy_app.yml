@@ -9,7 +9,6 @@ on:
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
-    container: ghcr.io/railwayapp/cli:latest
 
     steps:
     - name: Checkout
@@ -19,6 +18,14 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install Railway CLI
+      run: npm install -g @railway/cli
 
     - name: Publish Backend
       run: |
