@@ -52,5 +52,23 @@ namespace AttendanceApi.Tests
             var course = Assert.IsType<Course>(createdAtActionResult.Value);
             Assert.Equal("New Course", course.Name);
         }
+
+        [Fact]
+        public async Task DeleteCourse_RemovesCourse()
+        {
+            // Arrange
+            var context = GetInMemoryDbContext();
+            var course = new Course { Id = 1, Name = "Test Course", Description = "Test", InstructorId = 1 };
+            context.Courses.Add(course);
+            context.SaveChanges();
+            var controller = new CoursesController(context);
+
+            // Act
+            var result = await controller.DeleteCourse(1);
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+            Assert.Empty(context.Courses);
+        }
     }
 }

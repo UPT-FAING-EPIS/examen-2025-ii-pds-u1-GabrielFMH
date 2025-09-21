@@ -1,0 +1,8 @@
+c:\Users\GaboDesktop\Documents\GitHub\examen-2025-ii-pds-u1-GabrielFMH\backend\AttendanceApi.Tests\bin\Debug\net9.0\.msCoverageSourceRootsMapping_AttendanceApi.Tests
+c:\Users\GaboDesktop\Documents\GitHub\examen-2025-ii-pds-u1-GabrielFMH\backend\AttendanceApi.Tests\bin\Debug\net9.0\CoverletSourceRootsMapping_AttendanceApi.Tests
+c:\Users\GaboDesktop\Documents\GitHub\examen-2025-ii-pds-u1-GabrielFMH\backend\AttendanceApi.Tests\obj\Debug\net9.0\AttendanceApi.Tests.csproj.AssemblyReference.cache
+c:\Users\GaboDesktop\Documents\GitHub\examen-2025-ii-pds-u1-GabrielFMH\backend\AttendanceApi.Tests\obj\Debug\net9.0\AttendanceApi.Tests.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\GaboDesktop\Documents\GitHub\examen-2025-ii-pds-u1-GabrielFMH\backend\AttendanceApi.Tests\obj\Debug\net9.0\AttendanceApi.Tests.AssemblyInfoInputs.cache
+c:\Users\GaboDesktop\Documents\GitHub\examen-2025-ii-pds-u1-GabrielFMH\backend\AttendanceApi.Tests\obj\Debug\net9.0\AttendanceApi.Tests.AssemblyInfo.cs
+c:\Users\GaboDesktop\Documents\GitHub\examen-2025-ii-pds-u1-GabrielFMH\backend\AttendanceApi.Tests\obj\Debug\net9.0\AttendanceApi.Tests.csproj.CoreCompileInputs.cache
+c:\Users\GaboDesktop\Documents\GitHub\examen-2025-ii-pds-u1-GabrielFMH\backend\AttendanceApi.Tests\obj\Debug\net9.0\AttendanceApi.Tests.sourcelink.json
