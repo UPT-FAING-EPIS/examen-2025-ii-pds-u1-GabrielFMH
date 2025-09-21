@@ -24,13 +24,11 @@ jobs:
         cd backend
         dotnet publish -c Release -o ./publish
 
-    - name: Deploy to Azure App Service
-      uses: azure/webapps-deploy@v3
+    - name: Deploy to Render
+      uses: renderinc/github-action@v1
       with:
-        app-name: 'attendance-backend-${{ secrets.SUFFIX }}'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AZURE_APP_SERVICE_PUBLISH_PROFILE }}
-        package: backend/publish
+        api-key: ${{ secrets.RENDER_API_KEY }}
+        service-name: "attendance-backend"
 
   deploy-frontend:
     runs-on: ubuntu-latest
