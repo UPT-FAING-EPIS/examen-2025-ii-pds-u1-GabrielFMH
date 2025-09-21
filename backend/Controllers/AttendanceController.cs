@@ -33,7 +33,7 @@ namespace AttendanceApi.Controllers
 
             if (courseId.HasValue)
             {
-                query = query.Where(a => a.Session.CourseId == courseId.Value);
+                query = query.Where(a => a.Session != null && a.Session.CourseId == courseId.Value);
             }
 
             if (studentId.HasValue)

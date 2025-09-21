@@ -20,7 +20,7 @@ const StudentAttendancePanel: React.FC<StudentAttendancePanelProps> = ({ student
           sessionsApi.getAll(),
           coursesApi.getAll()
         ]);
-        setSessions(sessionsResponse.data);
+        setSessions(sessionsResponse.data.filter(s => s.courseId > 0));
         setCourses(coursesResponse.data);
       } catch (err) {
         setError('Error al cargar datos.');

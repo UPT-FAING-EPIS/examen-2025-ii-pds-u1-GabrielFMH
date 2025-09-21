@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AttendanceApi.Models
 {
@@ -20,6 +21,7 @@ namespace AttendanceApi.Models
         public string Dni { get; set; } = string.Empty;
 
         // Navigation properties
+        [JsonIgnore]
         public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
     }
 }
