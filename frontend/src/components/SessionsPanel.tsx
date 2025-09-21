@@ -129,8 +129,7 @@ const SessionsPanel: React.FC = () => {
         />
         <button type="submit">Crear Sesión</button>
       </form>
-      // SessionsPanel.tsx (parte del renderizado de la lista)
-        <ul className="list">
+      <ul className="list">
           {sessions.map(session => {
             // Buscar el objeto Course correspondiente en el array 'courses' usando session.courseId
             const courseForSession = courses.find(course => course.id === session.courseId);

@@ -28,7 +28,7 @@ jobs:
     - name: Generate Documentation
       run: |
         cd backend
-        docfx init -q
+        docfx init
         docfx build
 
     - name: Deploy to GitHub Pages
