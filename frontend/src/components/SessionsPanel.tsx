@@ -24,7 +24,7 @@ const SessionsPanel: React.FC = () => {
       setCourses(coursesResponse.data);
     } catch (error) {
       console.error('Error loading data:', error);
-      alert('Error loading data: ' + (error as Error).message);
+      alert('Error al cargar datos: ' + (error as Error).message);
     } finally {
       setLoading(false);
     }
@@ -35,11 +35,11 @@ const SessionsPanel: React.FC = () => {
     
     // Validación básica del lado del cliente
     if (newSession.courseId <= 0) {
-        alert('Please select a valid course.');
+        alert('Por favor selecciona un curso válido.');
         return;
     }
     if (!newSession.date) {
-        alert('Please enter a date.');
+        alert('Por favor ingresa una fecha.');
         return;
     }
 
@@ -63,7 +63,7 @@ const SessionsPanel: React.FC = () => {
       console.error('Error creating session:', error);
       
       // Mejor manejo de errores
-      let errorMsg = 'Error creating session.';
+      let errorMsg = 'Error al crear sesión.';
       if (error.response) {
         // El servidor respondió con un código de error
         errorMsg = error.response.data?.title || error.response.statusText || errorMsg;
@@ -76,28 +76,28 @@ const SessionsPanel: React.FC = () => {
         }
       } else if (error.request) {
         // La solicitud fue hecha pero no hubo respuesta
-        errorMsg = 'No response received from server.';
+        errorMsg = 'No se recibió respuesta del servidor.';
       } else {
         // Algo pasó al configurar la solicitud
-        errorMsg = error.message || 'Unknown error.';
+        errorMsg = error.message || 'Error desconocido.';
       }
       
       alert(errorMsg);
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
 
   return (
     <div className="panel">
-      <h2>Sessions</h2>
+      <h2>Sesiones</h2>
       <form onSubmit={handleCreateSession} className="form">
         <select
           value={newSession.courseId}
           onChange={(e) => setNewSession({ ...newSession, courseId: parseInt(e.target.value, 10) })}
           required
         >
-          <option value={0}>Select a course</option> {/* Opción por defecto */}
+          <option value={0}>Seleccionar un curso</option> {/* Opción por defecto */}
           {courses.map(course => (
             <option key={course.id} value={course.id}>{course.name}</option>
           ))}
@@ -110,12 +110,12 @@ const SessionsPanel: React.FC = () => {
         />
         <input
           type="text"
-          placeholder="Topic"
+          placeholder="Tema"
           value={newSession.topic}
           onChange={(e) => setNewSession({ ...newSession, topic: e.target.value })}
           required
         />
-        <button type="submit">Create Session</button>
+        <button type="submit">Crear Sesión</button>
       </form>
       // SessionsPanel.tsx (parte del renderizado de la lista)
         <ul className="list">
@@ -125,7 +125,7 @@ const SessionsPanel: React.FC = () => {
             return (
               <li key={session.id}>
                 {/* Usar el nombre del curso encontrado */}
-                <strong>{courseForSession ? courseForSession.name : 'Unknown Course'}</strong> - {new Date(session.date).toLocaleString()} - {session.topic}
+                <strong>{courseForSession ? courseForSession.name : 'Curso Desconocido'}</strong> - {new Date(session.date).toLocaleString()} - {session.topic}
               </li>
             );
           })}

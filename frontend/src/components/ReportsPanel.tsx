@@ -15,27 +15,27 @@ const ReportsPanel: React.FC = () => {
       const response = await reportsApi.getAttendanceReport();
       setReports(response.data);
     } catch (error) {
-      console.error('Error loading reports:', error);
+      console.error('Error al cargar reportes:', error);
     } finally {
       setLoading(false);
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
 
   return (
     <div className="panel">
-      <h2>Attendance Reports</h2>
+      <h2>Reportes de Asistencia</h2>
       <table className="reports-table">
         <thead>
           <tr>
-            <th>Course</th>
-            <th>Student</th>
-            <th>Total Sessions</th>
-            <th>Present</th>
-            <th>Absent</th>
-            <th>Late</th>
-            <th>Attendance %</th>
+            <th>Curso</th>
+            <th>Estudiante</th>
+            <th>Sesiones Totales</th>
+            <th>Presente</th>
+            <th>Ausente</th>
+            <th>Tarde</th>
+            <th>Porcentaje de Asistencia</th>
           </tr>
         </thead>
         <tbody>

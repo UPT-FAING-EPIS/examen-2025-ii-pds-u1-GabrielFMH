@@ -17,7 +17,7 @@ const AttendancePanel: React.FC = () => {
       const coursesResponse = await coursesApi.getAll();
       setCourses(coursesResponse.data);
     } catch (error) {
-      console.error('Error loading data:', error);
+      console.error('Error al cargar datos:', error);
     } finally {
       setLoading(false);
     }
@@ -28,7 +28,7 @@ const AttendancePanel: React.FC = () => {
       const response = await attendanceApi.getByCourse(courseId);
       setAttendance(response.data);
     } catch (error) {
-      console.error('Error loading attendance:', error);
+      console.error('Error al cargar asistencia:', error);
     }
   };
 
@@ -45,31 +45,31 @@ const AttendancePanel: React.FC = () => {
         if (selectedCourseId) loadAttendance(selectedCourseId);
       }
     } catch (error) {
-      console.error('Error updating attendance:', error);
+      console.error('Error al actualizar asistencia:', error);
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
 
   return (
     <div className="panel">
-      <h2>Attendance Management</h2>
+      <h2>Gestión de Asistencia</h2>
       <select onChange={(e) => handleCourseChange(parseInt(e.target.value))}>
-        <option value="">Select Course</option>
+        <option value="">Seleccionar Curso</option>
         {courses.map(course => (
           <option key={course.id} value={course.id}>{course.name}</option>
         ))}
       </select>
       {selectedCourseId && (
         <div>
-          <h3>Attendance Records</h3>
+          <h3>Registros de Asistencia</h3>
           <table className="attendance-table">
             <thead>
               <tr>
-                <th>Student</th>
-                <th>Session</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th>Estudiante</th>
+                <th>Sesión</th>
+                <th>Estado</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -83,9 +83,9 @@ const AttendancePanel: React.FC = () => {
                       value={record.status}
                       onChange={(e) => handleAttendanceChange(record.id, parseInt(e.target.value) as AttendanceStatus)}
                     >
-                      <option value={AttendanceStatus.Present}>Present</option>
-                      <option value={AttendanceStatus.Absent}>Absent</option>
-                      <option value={AttendanceStatus.Late}>Late</option>
+                      <option value={AttendanceStatus.Present}>Presente</option>
+                      <option value={AttendanceStatus.Absent}>Ausente</option>
+                      <option value={AttendanceStatus.Late}>Tarde</option>
                     </select>
                   </td>
                 </tr>

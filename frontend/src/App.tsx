@@ -11,12 +11,12 @@ function App() {
     <Router>
       <div className="App">
         <nav className="navbar">
-          <h1>Attendance Management System</h1>
+          <h1>Sistema de Gestión de Asistencia</h1>
           <ul>
-            <li><Link to="/courses">Courses</Link></li>
-            <li><Link to="/sessions">Sessions</Link></li>
-            <li><Link to="/attendance">Attendance</Link></li>
-            <li><Link to="/reports">Reports</Link></li>
+            <li><Link to="/courses">Cursos</Link></li>
+            <li><Link to="/sessions">Sesiones</Link></li>
+            <li><Link to="/attendance">Asistencia</Link></li>
+            <li><Link to="/reports">Reportes</Link></li>
           </ul>
         </nav>
         <main>

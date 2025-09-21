@@ -17,7 +17,7 @@ const CoursesPanel: React.FC = () => {
       setCourses(response.data);
     } catch (error) {
       console.error('Error loading courses:', error);
-      alert('Error loading courses: ' + (error as Error).message);
+      alert('Error al cargar cursos: ' + (error as Error).message);
     } finally {
       setLoading(false);
     }
@@ -30,30 +30,30 @@ const CoursesPanel: React.FC = () => {
       setNewCourse({ name: '', description: '', instructorId: 1 });
       loadCourses();
     } catch (error) {
-      console.error('Error creating course:', error);
+      console.error('Error al crear curso:', error);
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
 
   return (
     <div className="panel">
-      <h2>Courses</h2>
+      <h2>Cursos</h2>
       <form onSubmit={handleCreateCourse} className="form">
         <input
           type="text"
-          placeholder="Course Name"
+          placeholder="Nombre del Curso"
           value={newCourse.name}
           onChange={(e) => setNewCourse({ ...newCourse, name: e.target.value })}
           required
         />
         <input
           type="text"
-          placeholder="Description"
+          placeholder="Descripción"
           value={newCourse.description}
           onChange={(e) => setNewCourse({ ...newCourse, description: e.target.value })}
         />
-        <button type="submit">Add Course</button>
+        <button type="submit">Agregar Curso</button>
       </form>
       <ul className="list">
         {courses.map(course => (
