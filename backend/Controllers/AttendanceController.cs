@@ -7,8 +7,8 @@ namespace AttendanceApi.Controllers
 {
     public class RegisterAttendanceRequest
     {
-        public string Name { get; set; } = string.Empty;
-        public string Dni { get; set; } = string.Empty;
+        public required string Name { get; set; }
+        public required string Dni { get; set; }
         public int SessionId { get; set; }
     }
 
