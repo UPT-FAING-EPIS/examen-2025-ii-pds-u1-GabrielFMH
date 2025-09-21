@@ -5,6 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AttendanceApi.Controllers
 {
+    public class RegisterAttendanceRequest
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Dni { get; set; } = string.Empty;
+        public int SessionId { get; set; }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class AttendanceController : ControllerBase
@@ -75,6 +82,41 @@ namespace AttendanceApi.Controllers
             }
 
             return NoContent();
+        }
+
+        // POST: api/attendance/register
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterAttendance([FromBody] RegisterAttendanceRequest request)
+        {
+            // Find or create student
+            var student = await _context.Students.FirstOrDefaultAsync(s => s.Dni == request.Dni);
+            if (student == null)
+            {
+                student = new Student { Name = request.Name, Dni = request.Dni, Email = $"{request.Name.ToLower().Replace(" ", "")}@example.com" };
+                _context.Students.Add(student);
+                await _context.SaveChangesAsync();
+            }
+
+            // Check if attendance already exists
+            var existingAttendance = await _context.Attendances.FirstOrDefaultAsync(a => a.SessionId == request.SessionId && a.StudentId == student.Id);
+            if (existingAttendance != null)
+            {
+                return BadRequest("Ya has registrado asistencia para esta sesión.");
+            }
+
+            // Create attendance
+            var attendance = new Attendance
+            {
+                SessionId = request.SessionId,
+                StudentId = student.Id,
+                Status = AttendanceStatus.Present,
+                RecordedAt = DateTime.UtcNow
+            };
+
+            _context.Attendances.Add(attendance);
+            await _context.SaveChangesAsync();
+
+            return Ok("Asistencia registrada exitosamente.");
         }
 
         private bool AttendanceExists(int id)

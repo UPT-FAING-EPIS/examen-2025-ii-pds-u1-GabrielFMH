@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import LoginPanel from './components/LoginPanel';
+import StudentAttendancePanel from './components/StudentAttendancePanel';
 import CoursesPanel from './components/CoursesPanel';
 import SessionsPanel from './components/SessionsPanel';
 import AttendancePanel from './components/AttendancePanel';
 import ReportsPanel from './components/ReportsPanel';
 import './App.css';
 
-function App() {
+function TutorApp() {
   return (
     <Router>
       <div className="App">
@@ -31,6 +33,35 @@ function App() {
       </div>
     </Router>
   );
+}
+
+function App() {
+  const [role, setRole] = useState<'student' | 'tutor' | null>(null);
+  const [studentData, setStudentData] = useState<{ name: string; dni: string } | null>(null);
+
+  const handleLogin = (selectedRole: 'student' | 'tutor', data?: { name: string; dni: string }) => {
+    setRole(selectedRole);
+    if (data) setStudentData(data);
+  };
+
+  const handleBack = () => {
+    setRole(null);
+    setStudentData(null);
+  };
+
+  if (!role) {
+    return <LoginPanel onLogin={handleLogin} />;
+  }
+
+  if (role === 'tutor') {
+    return <TutorApp />;
+  }
+
+  if (role === 'student' && studentData) {
+    return <StudentAttendancePanel studentData={studentData} onBack={handleBack} />;
+  }
+
+  return null;
 }
 
 export default App;

@@ -27,6 +27,7 @@ export const attendanceApi = {
   getByStudent: (studentId: number) => api.get<Attendance[]>(`/attendance?studentId=${studentId}`),
   create: (attendance: Omit<Attendance, 'id' | 'recordedAt'>) => api.post<Attendance>('/attendance', attendance),
   update: (id: number, attendance: Attendance) => api.put(`/attendance/${id}`, attendance),
+  register: (data: { name: string; dni: string; sessionId: number }) => api.post('/attendance/register', data),
 };
 
 export const reportsApi = {

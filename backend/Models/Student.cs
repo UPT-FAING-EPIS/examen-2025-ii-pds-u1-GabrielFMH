@@ -15,6 +15,10 @@ namespace AttendanceApi.Models
         [StringLength(150)]
         public string Email { get; set; } = string.Empty;
 
+        [Required]
+        [StringLength(20)]
+        public string Dni { get; set; } = string.Empty;
+
         // Navigation properties
         public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
     }
