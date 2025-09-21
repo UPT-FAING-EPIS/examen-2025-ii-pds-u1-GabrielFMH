@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LoginPanel from './components/LoginPanel';
 import StudentAttendancePanel from './components/StudentAttendancePanel';
+import StudentAttendanceView from './components/StudentAttendanceView';
 import CoursesPanel from './components/CoursesPanel';
 import SessionsPanel from './components/SessionsPanel';
 import AttendancePanel from './components/AttendancePanel';
@@ -18,6 +19,7 @@ function TutorApp() {
             <li><Link to="/courses">Cursos</Link></li>
             <li><Link to="/sessions">Sesiones</Link></li>
             <li><Link to="/attendance">Asistencia</Link></li>
+            <li><Link to="/student-attendance">Asistencia por Estudiante</Link></li>
             <li><Link to="/reports">Reportes</Link></li>
           </ul>
         </nav>
@@ -26,6 +28,7 @@ function TutorApp() {
             <Route path="/courses" element={<CoursesPanel />} />
             <Route path="/sessions" element={<SessionsPanel />} />
             <Route path="/attendance" element={<AttendancePanel />} />
+            <Route path="/student-attendance" element={<StudentAttendanceView />} />
             <Route path="/reports" element={<ReportsPanel />} />
             <Route path="/" element={<CoursesPanel />} />
           </Routes>

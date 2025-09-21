@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Course, Session, Attendance, AttendanceReport } from '../types';
+import { Course, Session, Attendance, AttendanceReport, Student } from '../types';
 
 const API_BASE_URL = 'http://localhost:5238/api';
 
@@ -28,6 +28,14 @@ export const attendanceApi = {
   create: (attendance: Omit<Attendance, 'id' | 'recordedAt'>) => api.post<Attendance>('/attendance', attendance),
   update: (id: number, attendance: Attendance) => api.put(`/attendance/${id}`, attendance),
   register: (data: { name: string; dni: string; sessionId: number }) => api.post('/attendance/register', data),
+};
+
+export const studentsApi = {
+  getAll: () => api.get<Student[]>('/students'),
+  getById: (id: number) => api.get<Student>(`/students/${id}`),
+  create: (student: Omit<Student, 'id'>) => api.post<Student>('/students', student),
+  update: (id: number, student: Student) => api.put(`/students/${id}`, student),
+  delete: (id: number) => api.delete(`/students/${id}`),
 };
 
 export const reportsApi = {
