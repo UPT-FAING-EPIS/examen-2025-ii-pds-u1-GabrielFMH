@@ -41,6 +41,7 @@ jobs:
           +Id: int
           +Name: string
           +Email: string
+          +Dni: string
         }
         class Session {
           +Id: int
