@@ -17,6 +17,7 @@ const CoursesPanel: React.FC = () => {
       setCourses(response.data);
     } catch (error) {
       console.error('Error loading courses:', error);
+      alert('Error loading courses: ' + (error as Error).message);
     } finally {
       setLoading(false);
     }
