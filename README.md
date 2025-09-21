@@ -3,6 +3,7 @@
 
 
 nombre: Gabriel Melendez Huarachi
+link del ulimo despligue: https://frontend-bv1uqqswi-gabriel-melendezs-projects-915f013d.vercel.app/
 
 # Sistema de Gestión de Asistencia
 
