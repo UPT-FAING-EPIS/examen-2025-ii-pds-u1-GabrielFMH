@@ -13,11 +13,12 @@ export interface Student {
 
 export interface Session {
   id: number;
-  courseId: number;
-  date: string;
-  topic: string;
-  course?: Course;
+  courseId: number; // camelCase
+  date: string;     // camelCase
+  topic: string;    // camelCase
+  course?: Course; // Opcional, ya que es de navegación y se ignora en el envío
 }
+
 
 export interface Attendance {
   id: number;

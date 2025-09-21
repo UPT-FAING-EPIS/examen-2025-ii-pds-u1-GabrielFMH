@@ -41,6 +41,11 @@ namespace AttendanceApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Session>> PostSession(Session session)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.Sessions.Add(session);
             await _context.SaveChangesAsync();
 

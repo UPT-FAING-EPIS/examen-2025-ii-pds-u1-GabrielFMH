@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AttendanceApi.Models
 {
@@ -16,7 +17,9 @@ namespace AttendanceApi.Models
         public string Topic { get; set; } = string.Empty;
 
         // Navigation properties
-        public Course Course { get; set; } = null!;
+        [JsonIgnore]
+        public Course? Course { get; set; }
+        [JsonIgnore]
         public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
     }
 }
