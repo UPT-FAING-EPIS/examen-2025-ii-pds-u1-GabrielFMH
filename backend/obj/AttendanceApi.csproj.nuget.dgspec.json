@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\AttendanceApi.csproj": {}
+    "c:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\AttendanceApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\AttendanceApi.csproj": {
+    "c:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\AttendanceApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\AttendanceApi.csproj",
+        "projectUniqueName": "c:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\AttendanceApi.csproj",
         "projectName": "AttendanceApi",
-        "projectPath": "C:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\AttendanceApi.csproj",
+        "projectPath": "c:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\AttendanceApi.csproj",
         "packagesPath": "C:\\Users\\GaboDesktop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\obj\\",
+        "outputPath": "c:\\Users\\GaboDesktop\\Documents\\GitHub\\examen-2025-ii-pds-u1-GabrielFMH\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
