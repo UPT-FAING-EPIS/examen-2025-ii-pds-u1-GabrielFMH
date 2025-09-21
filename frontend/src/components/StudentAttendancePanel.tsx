@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { sessionsApi, attendanceApi } from '../services/api';
-import { Session } from '../types';
+import { sessionsApi, coursesApi, attendanceApi } from '../services/api';
+import { Session, Course } from '../types';
 
 interface StudentAttendancePanelProps {
   studentData: { name: string; dni: string };
@@ -9,21 +9,26 @@ interface StudentAttendancePanelProps {
 
 const StudentAttendancePanel: React.FC<StudentAttendancePanelProps> = ({ studentData, onBack }) => {
   const [sessions, setSessions] = useState<Session[]>([]);
+  const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchSessions = async () => {
+    const fetchData = async () => {
       try {
-        const response = await sessionsApi.getAll();
-        setSessions(response.data);
+        const [sessionsResponse, coursesResponse] = await Promise.all([
+          sessionsApi.getAll(),
+          coursesApi.getAll()
+        ]);
+        setSessions(sessionsResponse.data);
+        setCourses(coursesResponse.data);
       } catch (err) {
-        setError('Error al cargar sesiones.');
+        setError('Error al cargar datos.');
       } finally {
         setLoading(false);
       }
     };
-    fetchSessions();
+    fetchData();
   }, []);
 
   const handleRegisterAttendance = async (sessionId: number) => {
@@ -47,12 +52,15 @@ const StudentAttendancePanel: React.FC<StudentAttendancePanelProps> = ({ student
         <p>No hay sesiones disponibles.</p>
       ) : (
         <ul>
-          {sessions.map((session) => (
-            <li key={session.id}>
-              <strong>{session.topic}</strong> - {session.date} - Curso: {session.course?.name || 'Desconocido'}
-              <button onClick={() => handleRegisterAttendance(session.id)}>Registrar Asistencia</button>
-            </li>
-          ))}
+          {sessions.map((session) => {
+            const courseForSession = courses.find(course => course.id === session.courseId);
+            return (
+              <li key={session.id}>
+                <strong>{session.topic}</strong> - {new Date(session.date).toLocaleString()} - Curso: {courseForSession ? courseForSession.name : 'Curso Desconocido'}
+                <button onClick={() => handleRegisterAttendance(session.id)}>Registrar Asistencia</button>
+              </li>
+            );
+          })}
         </ul>
       )}
       <button onClick={onBack}>Volver</button>
