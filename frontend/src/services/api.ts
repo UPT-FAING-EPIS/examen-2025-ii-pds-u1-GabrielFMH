@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Course, Session, Attendance, AttendanceReport, Student } from '../types';
 
 const API_BASE_URL = process.env.NODE_ENV === 'production'
-  ? 'https://adorable-healing-production.up.railway.app:8080/api'
+  ? 'https://adorable-healing-production.up.railway.app/api'
   : 'http://localhost:5238/api';
 
 const api = axios.create({
